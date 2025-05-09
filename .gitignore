@@ -1,4 +1,6 @@
-./go.mod
-./go.sum
+# IntelliJ IDEA
+.idea/
 
-.idea
+# Go dependencies
+/go.mod
+/go.sum
