@@ -1,7 +1,7 @@
 package main
 
 import (
-	user "IOT-C/kitex_gen/iot/user/user"
+	user "github.com/Practical-Training-IOT/IOT-C/kitex_gen/iot/user/user"
 	"log"
 )
 

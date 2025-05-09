@@ -1,8 +1,8 @@
 package main
 
 import (
-	user "IOT-C/kitex_gen/iot/user"
 	"context"
+	user "github.com/Practical-Training-IOT/IOT-C/kitex_gen/iot/user"
 )
 
 // UserImpl implements the last service interface defined in the IDL.

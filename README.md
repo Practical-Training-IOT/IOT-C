@@ -45,4 +45,4 @@
 写完thrift后在根目录执行 kitex -module github.com/Practical-Training-IOT/IOT-C idl/你的thrift
 
 
-然后在rpc文件内创建一个你服务的文件然后执行kitex -module github.com/Practical-Training-IOT/IOT-C -service iot.user -use IOT-C/kitex_gen ../../idl/你的thrift
+然后在rpc文件内创建一个你服务的文件然后执行kitex -module github.com/Practical-Training-IOT/IOT-C -service iot.user -use github.com/Practical-Training-IOT/IOT-C/kitex_gen ../../idl/你的thrift
