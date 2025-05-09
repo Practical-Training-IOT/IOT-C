@@ -4,11 +4,13 @@ package main
 
 import (
 	handler "github.com/Practical-Training-IOT/IOT-C/gateway/biz/handler"
+	"github.com/Practical-Training-IOT/IOT-C/gateway/biz/router"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 
 // customizeRegister registers customize routers.
 func customizedRegister(r *server.Hertz) {
 	r.GET("/ping", handler.Ping)
+	router.SetAlarmRouter(r)
 	// your code ...
 }
