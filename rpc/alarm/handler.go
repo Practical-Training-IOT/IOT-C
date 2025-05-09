@@ -17,6 +17,18 @@ func (s *AlarmImpl) AlarmList(ctx context.Context, req *alarm.AlarmListReq) (res
 	var AlarmList []*alarm.AlarmList
 	var total int64
 	var List []database.Alarm
+	var page int64
+	var size int64
+	if req.Page == 0 {
+		page = 1
+	} else {
+		page = int64(req.Page)
+	}
+	if req.Size == 0 {
+		size = 10
+	} else {
+		size = int64(req.Size)
+	}
 	// 先获取总数
 	err = config.DB.Model(&database.Alarm{}).Where("deleted_at IS NULL").Count(&total).Error
 	if err != nil {
@@ -24,13 +36,13 @@ func (s *AlarmImpl) AlarmList(ctx context.Context, req *alarm.AlarmListReq) (res
 	}
 
 	// 计算偏移量
-	offset := (req.Page - 1) * req.Size
+	offset := (page - 1) * size
 
 	// 查询分页数据
 	err = config.DB.Where("deleted_at IS NULL").
 		Order("created_at DESC").
 		Offset(int(offset)).
-		Limit(int(req.Size)).
+		Limit(int(size)).
 		Find(&List).Error
 
 	if err != nil {

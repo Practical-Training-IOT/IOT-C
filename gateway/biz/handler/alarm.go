@@ -26,7 +26,7 @@ func AlarmList(ctx context.Context, c *app.RequestContext) {
 		log.Fatal(err)
 	}
 
-	c.String(200, list.String())
+	c.JSON(200, list)
 }
 
 func AlarmDetail(ctx context.Context, c *app.RequestContext) {
@@ -41,7 +41,7 @@ func AlarmDetail(ctx context.Context, c *app.RequestContext) {
 		log.Fatal(err)
 	}
 
-	c.String(200, list.String())
+	c.JSON(200, list)
 }
 
 func AlarmSearch(ctx context.Context, c *app.RequestContext) {
@@ -55,5 +55,5 @@ func AlarmSearch(ctx context.Context, c *app.RequestContext) {
 		log.Fatal(err)
 	}
 
-	c.String(200, list.String())
+	c.JSON(200, list)
 }

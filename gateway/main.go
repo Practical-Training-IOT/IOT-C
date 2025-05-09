@@ -4,11 +4,23 @@ package main
 
 import (
 	"github.com/cloudwego/hertz/pkg/app/server"
+	"github.com/hertz-contrib/cors"
+	"time"
 )
 
 func main() {
 	h := server.Default()
 
+	// 添加 CORS 配置
+	h.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:8080"}, // 前端地址
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
+		MaxAge:           12 * time.Hour,
+		AllowCredentials: true, // 如果需要携带 cookies，设为 true
+	}))
+
 	register(h)
+
 	h.Spin()
 }

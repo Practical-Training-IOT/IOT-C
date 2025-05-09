@@ -1,2 +1,4 @@
 2025-05-09T20:53:53.591+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-09T21:38:35.236+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-09T21:51:13.354+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-09T21:57:50.463+0800	INFO	core/init.go:124	Successfully connected to database with GORM
