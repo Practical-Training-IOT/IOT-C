@@ -1,9 +1,11 @@
 package config
 
-import "github.com/jackc/pgx/v5/pgxpool"
+import (
+	"gorm.io/gorm"
+)
 
 var (
-	DB          *pgxpool.Pool
+	DB          *gorm.DB
 	AlarmStruct AlarmNacosStruct
 	DataConfig  Configs
 )

@@ -11,7 +11,10 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 	"os"
+	"time"
 )
 
 var (
@@ -102,10 +105,23 @@ func PostGreSQLInit() {
 	C := config.AlarmStruct.PostgreSQL
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=disable", C.User, C.Password, C.Host, C.Port, C.Datebase)
 	fmt.Println(dsn)
-	config.DB, err = pgxpool.New(context.Background(), dsn)
+	config.DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		zap.S().Error(err)
+		zap.S().Errorf("failed to connect database: %v", err)
 		return
 	}
 
+	// 获取底层sql.DB对象并配置连接池
+	sqlDB, err := config.DB.DB()
+	if err != nil {
+		zap.S().Errorf("failed to get sql.DB: %v", err)
+		return
+	}
+
+	// 设置连接池参数
+	sqlDB.SetMaxIdleConns(10)           // 空闲连接池中的最大连接数
+	sqlDB.SetMaxOpenConns(100)          // 数据库的最大打开连接数
+	sqlDB.SetConnMaxLifetime(time.Hour) // 连接可重用的最长时间
+
+	zap.S().Info("Successfully connected to database with GORM")
 }
