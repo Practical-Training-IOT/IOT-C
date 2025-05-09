@@ -1,11 +1,9 @@
 package core
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"github.com/Practical-Training-IOT/IOT-C/common/basic/config"
-	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
