@@ -20,6 +20,27 @@ var serviceMethods = map[string]kitex.MethodInfo{
 		false,
 		kitex.WithStreamingMode(kitex.StreamingNone),
 	),
+	"Login": kitex.NewMethodInfo(
+		loginHandler,
+		newUserLoginArgs,
+		newUserLoginResult,
+		false,
+		kitex.WithStreamingMode(kitex.StreamingNone),
+	),
+	"UserInfo": kitex.NewMethodInfo(
+		userInfoHandler,
+		newUserUserInfoArgs,
+		newUserUserInfoResult,
+		false,
+		kitex.WithStreamingMode(kitex.StreamingNone),
+	),
+	"UserInfoUpload": kitex.NewMethodInfo(
+		userInfoUploadHandler,
+		newUserUserInfoUploadArgs,
+		newUserUserInfoUploadResult,
+		false,
+		kitex.WithStreamingMode(kitex.StreamingNone),
+	),
 }
 
 var (
@@ -104,6 +125,60 @@ func newUserRegisterResult() interface{} {
 	return user.NewUserRegisterResult()
 }
 
+func loginHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	realArg := arg.(*user.UserLoginArgs)
+	realResult := result.(*user.UserLoginResult)
+	success, err := handler.(user.User).Login(ctx, realArg.Req)
+	if err != nil {
+		return err
+	}
+	realResult.Success = success
+	return nil
+}
+func newUserLoginArgs() interface{} {
+	return user.NewUserLoginArgs()
+}
+
+func newUserLoginResult() interface{} {
+	return user.NewUserLoginResult()
+}
+
+func userInfoHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	realArg := arg.(*user.UserUserInfoArgs)
+	realResult := result.(*user.UserUserInfoResult)
+	success, err := handler.(user.User).UserInfo(ctx, realArg.Req)
+	if err != nil {
+		return err
+	}
+	realResult.Success = success
+	return nil
+}
+func newUserUserInfoArgs() interface{} {
+	return user.NewUserUserInfoArgs()
+}
+
+func newUserUserInfoResult() interface{} {
+	return user.NewUserUserInfoResult()
+}
+
+func userInfoUploadHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	realArg := arg.(*user.UserUserInfoUploadArgs)
+	realResult := result.(*user.UserUserInfoUploadResult)
+	success, err := handler.(user.User).UserInfoUpload(ctx, realArg.Req)
+	if err != nil {
+		return err
+	}
+	realResult.Success = success
+	return nil
+}
+func newUserUserInfoUploadArgs() interface{} {
+	return user.NewUserUserInfoUploadArgs()
+}
+
+func newUserUserInfoUploadResult() interface{} {
+	return user.NewUserUserInfoUploadResult()
+}
+
 type kClient struct {
 	c client.Client
 }
@@ -119,6 +194,36 @@ func (p *kClient) Register(ctx context.Context, req *user.RegisterReq) (r *user.
 	_args.Req = req
 	var _result user.UserRegisterResult
 	if err = p.c.Call(ctx, "Register", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) Login(ctx context.Context, req *user.LoginReq) (r *user.LoginRes, err error) {
+	var _args user.UserLoginArgs
+	_args.Req = req
+	var _result user.UserLoginResult
+	if err = p.c.Call(ctx, "Login", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) UserInfo(ctx context.Context, req *user.UserInfoReq) (r *user.UserInfoRes, err error) {
+	var _args user.UserUserInfoArgs
+	_args.Req = req
+	var _result user.UserUserInfoResult
+	if err = p.c.Call(ctx, "UserInfo", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) UserInfoUpload(ctx context.Context, req *user.UserInfoUploadReq) (r *user.UserInfoUploadRes, err error) {
+	var _args user.UserUserInfoUploadArgs
+	_args.Req = req
+	var _result user.UserUserInfoUploadResult
+	if err = p.c.Call(ctx, "UserInfoUpload", &_args, &_result); err != nil {
 		return
 	}
 	return _result.GetSuccess(), nil

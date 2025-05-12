@@ -1,0 +1,8 @@
+Nacos:
+  NameSpace: "094b9300-fbfe-4634-89d4-80f12083e102"
+  User: "nacos"
+  Password: "nacos"
+  Host: "117.27.231.144"
+  Port: 8848
+  DataId: "alarm"
+  Group: "alarm"
