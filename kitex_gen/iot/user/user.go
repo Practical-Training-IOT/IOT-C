@@ -9,6 +9,7 @@ import (
 
 type RegisterReq struct {
 	UserName string `thrift:"userName,1" frugal:"1,default,string" json:"userName"`
+	Password string `thrift:"password,2" frugal:"2,default,string" json:"password"`
 }
 
 func NewRegisterReq() *RegisterReq {
@@ -21,8 +22,15 @@ func (p *RegisterReq) InitDefault() {
 func (p *RegisterReq) GetUserName() (v string) {
 	return p.UserName
 }
+
+func (p *RegisterReq) GetPassword() (v string) {
+	return p.Password
+}
 func (p *RegisterReq) SetUserName(val string) {
 	p.UserName = val
+}
+func (p *RegisterReq) SetPassword(val string) {
+	p.Password = val
 }
 
 func (p *RegisterReq) String() string {
@@ -34,6 +42,7 @@ func (p *RegisterReq) String() string {
 
 var fieldIDToName_RegisterReq = map[int16]string{
 	1: "userName",
+	2: "password",
 }
 
 type RegisterRes struct {
@@ -65,8 +74,259 @@ var fieldIDToName_RegisterRes = map[int16]string{
 	1: "id",
 }
 
+type LoginReq struct {
+	UserName string `thrift:"userName,1" frugal:"1,default,string" json:"userName"`
+	Password string `thrift:"password,2" frugal:"2,default,string" json:"password"`
+}
+
+func NewLoginReq() *LoginReq {
+	return &LoginReq{}
+}
+
+func (p *LoginReq) InitDefault() {
+}
+
+func (p *LoginReq) GetUserName() (v string) {
+	return p.UserName
+}
+
+func (p *LoginReq) GetPassword() (v string) {
+	return p.Password
+}
+func (p *LoginReq) SetUserName(val string) {
+	p.UserName = val
+}
+func (p *LoginReq) SetPassword(val string) {
+	p.Password = val
+}
+
+func (p *LoginReq) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("LoginReq(%+v)", *p)
+}
+
+var fieldIDToName_LoginReq = map[int16]string{
+	1: "userName",
+	2: "password",
+}
+
+type LoginRes struct {
+	Id int32 `thrift:"id,1" frugal:"1,default,i32" json:"id"`
+}
+
+func NewLoginRes() *LoginRes {
+	return &LoginRes{}
+}
+
+func (p *LoginRes) InitDefault() {
+}
+
+func (p *LoginRes) GetId() (v int32) {
+	return p.Id
+}
+func (p *LoginRes) SetId(val int32) {
+	p.Id = val
+}
+
+func (p *LoginRes) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("LoginRes(%+v)", *p)
+}
+
+var fieldIDToName_LoginRes = map[int16]string{
+	1: "id",
+}
+
+type UserInfoReq struct {
+	Id int32 `thrift:"id,1" frugal:"1,default,i32" json:"id"`
+}
+
+func NewUserInfoReq() *UserInfoReq {
+	return &UserInfoReq{}
+}
+
+func (p *UserInfoReq) InitDefault() {
+}
+
+func (p *UserInfoReq) GetId() (v int32) {
+	return p.Id
+}
+func (p *UserInfoReq) SetId(val int32) {
+	p.Id = val
+}
+
+func (p *UserInfoReq) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserInfoReq(%+v)", *p)
+}
+
+var fieldIDToName_UserInfoReq = map[int16]string{
+	1: "id",
+}
+
+type UserInfoRes struct {
+	Username   string `thrift:"username,1" frugal:"1,default,string" json:"username"`
+	Department string `thrift:"department,2" frugal:"2,default,string" json:"department"`
+	Email      string `thrift:"email,3" frugal:"3,default,string" json:"email"`
+	Phone      string `thrift:"phone,4" frugal:"4,default,string" json:"phone"`
+	Avatar     string `thrift:"avatar,5" frugal:"5,default,string" json:"avatar"`
+}
+
+func NewUserInfoRes() *UserInfoRes {
+	return &UserInfoRes{}
+}
+
+func (p *UserInfoRes) InitDefault() {
+}
+
+func (p *UserInfoRes) GetUsername() (v string) {
+	return p.Username
+}
+
+func (p *UserInfoRes) GetDepartment() (v string) {
+	return p.Department
+}
+
+func (p *UserInfoRes) GetEmail() (v string) {
+	return p.Email
+}
+
+func (p *UserInfoRes) GetPhone() (v string) {
+	return p.Phone
+}
+
+func (p *UserInfoRes) GetAvatar() (v string) {
+	return p.Avatar
+}
+func (p *UserInfoRes) SetUsername(val string) {
+	p.Username = val
+}
+func (p *UserInfoRes) SetDepartment(val string) {
+	p.Department = val
+}
+func (p *UserInfoRes) SetEmail(val string) {
+	p.Email = val
+}
+func (p *UserInfoRes) SetPhone(val string) {
+	p.Phone = val
+}
+func (p *UserInfoRes) SetAvatar(val string) {
+	p.Avatar = val
+}
+
+func (p *UserInfoRes) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserInfoRes(%+v)", *p)
+}
+
+var fieldIDToName_UserInfoRes = map[int16]string{
+	1: "username",
+	2: "department",
+	3: "email",
+	4: "phone",
+	5: "avatar",
+}
+
+type UserInfoUploadReq struct {
+	Department string `thrift:"Department,1" frugal:"1,default,string" json:"Department"`
+	Email      string `thrift:"Email,2" frugal:"2,default,string" json:"Email"`
+	Phone      int64  `thrift:"Phone,3" frugal:"3,default,i64" json:"Phone"`
+	Username   string `thrift:"Username,4" frugal:"4,default,string" json:"Username"`
+	Id         int32  `thrift:"id,5" frugal:"5,default,i32" json:"id"`
+}
+
+func NewUserInfoUploadReq() *UserInfoUploadReq {
+	return &UserInfoUploadReq{}
+}
+
+func (p *UserInfoUploadReq) InitDefault() {
+}
+
+func (p *UserInfoUploadReq) GetDepartment() (v string) {
+	return p.Department
+}
+
+func (p *UserInfoUploadReq) GetEmail() (v string) {
+	return p.Email
+}
+
+func (p *UserInfoUploadReq) GetPhone() (v int64) {
+	return p.Phone
+}
+
+func (p *UserInfoUploadReq) GetUsername() (v string) {
+	return p.Username
+}
+
+func (p *UserInfoUploadReq) GetId() (v int32) {
+	return p.Id
+}
+func (p *UserInfoUploadReq) SetDepartment(val string) {
+	p.Department = val
+}
+func (p *UserInfoUploadReq) SetEmail(val string) {
+	p.Email = val
+}
+func (p *UserInfoUploadReq) SetPhone(val int64) {
+	p.Phone = val
+}
+func (p *UserInfoUploadReq) SetUsername(val string) {
+	p.Username = val
+}
+func (p *UserInfoUploadReq) SetId(val int32) {
+	p.Id = val
+}
+
+func (p *UserInfoUploadReq) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserInfoUploadReq(%+v)", *p)
+}
+
+var fieldIDToName_UserInfoUploadReq = map[int16]string{
+	1: "Department",
+	2: "Email",
+	3: "Phone",
+	4: "Username",
+	5: "id",
+}
+
+type UserInfoUploadRes struct {
+}
+
+func NewUserInfoUploadRes() *UserInfoUploadRes {
+	return &UserInfoUploadRes{}
+}
+
+func (p *UserInfoUploadRes) InitDefault() {
+}
+
+func (p *UserInfoUploadRes) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserInfoUploadRes(%+v)", *p)
+}
+
+var fieldIDToName_UserInfoUploadRes = map[int16]string{}
+
 type User interface {
 	Register(ctx context.Context, req *RegisterReq) (r *RegisterRes, err error)
+
+	Login(ctx context.Context, req *LoginReq) (r *LoginRes, err error)
+
+	UserInfo(ctx context.Context, req *UserInfoReq) (r *UserInfoRes, err error)
+
+	UserInfoUpload(ctx context.Context, req *UserInfoUploadReq) (r *UserInfoUploadRes, err error)
 }
 
 type UserRegisterArgs struct {
@@ -142,5 +402,233 @@ func (p *UserRegisterResult) String() string {
 }
 
 var fieldIDToName_UserRegisterResult = map[int16]string{
+	0: "success",
+}
+
+type UserLoginArgs struct {
+	Req *LoginReq `thrift:"req,1" frugal:"1,default,LoginReq" json:"req"`
+}
+
+func NewUserLoginArgs() *UserLoginArgs {
+	return &UserLoginArgs{}
+}
+
+func (p *UserLoginArgs) InitDefault() {
+}
+
+var UserLoginArgs_Req_DEFAULT *LoginReq
+
+func (p *UserLoginArgs) GetReq() (v *LoginReq) {
+	if !p.IsSetReq() {
+		return UserLoginArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+func (p *UserLoginArgs) SetReq(val *LoginReq) {
+	p.Req = val
+}
+
+func (p *UserLoginArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+func (p *UserLoginArgs) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserLoginArgs(%+v)", *p)
+}
+
+var fieldIDToName_UserLoginArgs = map[int16]string{
+	1: "req",
+}
+
+type UserLoginResult struct {
+	Success *LoginRes `thrift:"success,0,optional" frugal:"0,optional,LoginRes" json:"success,omitempty"`
+}
+
+func NewUserLoginResult() *UserLoginResult {
+	return &UserLoginResult{}
+}
+
+func (p *UserLoginResult) InitDefault() {
+}
+
+var UserLoginResult_Success_DEFAULT *LoginRes
+
+func (p *UserLoginResult) GetSuccess() (v *LoginRes) {
+	if !p.IsSetSuccess() {
+		return UserLoginResult_Success_DEFAULT
+	}
+	return p.Success
+}
+func (p *UserLoginResult) SetSuccess(x interface{}) {
+	p.Success = x.(*LoginRes)
+}
+
+func (p *UserLoginResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
+func (p *UserLoginResult) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserLoginResult(%+v)", *p)
+}
+
+var fieldIDToName_UserLoginResult = map[int16]string{
+	0: "success",
+}
+
+type UserUserInfoArgs struct {
+	Req *UserInfoReq `thrift:"req,1" frugal:"1,default,UserInfoReq" json:"req"`
+}
+
+func NewUserUserInfoArgs() *UserUserInfoArgs {
+	return &UserUserInfoArgs{}
+}
+
+func (p *UserUserInfoArgs) InitDefault() {
+}
+
+var UserUserInfoArgs_Req_DEFAULT *UserInfoReq
+
+func (p *UserUserInfoArgs) GetReq() (v *UserInfoReq) {
+	if !p.IsSetReq() {
+		return UserUserInfoArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+func (p *UserUserInfoArgs) SetReq(val *UserInfoReq) {
+	p.Req = val
+}
+
+func (p *UserUserInfoArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+func (p *UserUserInfoArgs) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserUserInfoArgs(%+v)", *p)
+}
+
+var fieldIDToName_UserUserInfoArgs = map[int16]string{
+	1: "req",
+}
+
+type UserUserInfoResult struct {
+	Success *UserInfoRes `thrift:"success,0,optional" frugal:"0,optional,UserInfoRes" json:"success,omitempty"`
+}
+
+func NewUserUserInfoResult() *UserUserInfoResult {
+	return &UserUserInfoResult{}
+}
+
+func (p *UserUserInfoResult) InitDefault() {
+}
+
+var UserUserInfoResult_Success_DEFAULT *UserInfoRes
+
+func (p *UserUserInfoResult) GetSuccess() (v *UserInfoRes) {
+	if !p.IsSetSuccess() {
+		return UserUserInfoResult_Success_DEFAULT
+	}
+	return p.Success
+}
+func (p *UserUserInfoResult) SetSuccess(x interface{}) {
+	p.Success = x.(*UserInfoRes)
+}
+
+func (p *UserUserInfoResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
+func (p *UserUserInfoResult) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserUserInfoResult(%+v)", *p)
+}
+
+var fieldIDToName_UserUserInfoResult = map[int16]string{
+	0: "success",
+}
+
+type UserUserInfoUploadArgs struct {
+	Req *UserInfoUploadReq `thrift:"req,1" frugal:"1,default,UserInfoUploadReq" json:"req"`
+}
+
+func NewUserUserInfoUploadArgs() *UserUserInfoUploadArgs {
+	return &UserUserInfoUploadArgs{}
+}
+
+func (p *UserUserInfoUploadArgs) InitDefault() {
+}
+
+var UserUserInfoUploadArgs_Req_DEFAULT *UserInfoUploadReq
+
+func (p *UserUserInfoUploadArgs) GetReq() (v *UserInfoUploadReq) {
+	if !p.IsSetReq() {
+		return UserUserInfoUploadArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+func (p *UserUserInfoUploadArgs) SetReq(val *UserInfoUploadReq) {
+	p.Req = val
+}
+
+func (p *UserUserInfoUploadArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+func (p *UserUserInfoUploadArgs) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserUserInfoUploadArgs(%+v)", *p)
+}
+
+var fieldIDToName_UserUserInfoUploadArgs = map[int16]string{
+	1: "req",
+}
+
+type UserUserInfoUploadResult struct {
+	Success *UserInfoUploadRes `thrift:"success,0,optional" frugal:"0,optional,UserInfoUploadRes" json:"success,omitempty"`
+}
+
+func NewUserUserInfoUploadResult() *UserUserInfoUploadResult {
+	return &UserUserInfoUploadResult{}
+}
+
+func (p *UserUserInfoUploadResult) InitDefault() {
+}
+
+var UserUserInfoUploadResult_Success_DEFAULT *UserInfoUploadRes
+
+func (p *UserUserInfoUploadResult) GetSuccess() (v *UserInfoUploadRes) {
+	if !p.IsSetSuccess() {
+		return UserUserInfoUploadResult_Success_DEFAULT
+	}
+	return p.Success
+}
+func (p *UserUserInfoUploadResult) SetSuccess(x interface{}) {
+	p.Success = x.(*UserInfoUploadRes)
+}
+
+func (p *UserUserInfoUploadResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
+func (p *UserUserInfoUploadResult) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("UserUserInfoUploadResult(%+v)", *p)
+}
+
+var fieldIDToName_UserUserInfoUploadResult = map[int16]string{
 	0: "success",
 }
