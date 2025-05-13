@@ -55,7 +55,7 @@ func (s *AlarmImpl) AlarmList(ctx context.Context, req *alarm.AlarmListReq) (res
 			list := alarm.AlarmList{
 				Id:      int32(v.ID),
 				Title:   v.RuleName,
-				Enabled: false,
+				Enabled: true,
 				Type:    v.AlarmType,
 				Level:   v.AlarmLevel,
 				Desc:    v.RuleDescription,
@@ -66,7 +66,7 @@ func (s *AlarmImpl) AlarmList(ctx context.Context, req *alarm.AlarmListReq) (res
 			list := alarm.AlarmList{
 				Id:      int32(v.ID),
 				Title:   v.RuleName,
-				Enabled: true,
+				Enabled: false,
 				Type:    v.AlarmType,
 				Level:   v.AlarmLevel,
 				Desc:    v.RuleDescription,
@@ -136,4 +136,25 @@ func (s *AlarmImpl) AlarmSearch(ctx context.Context, req *alarm.AlarmSearchReq) 
 		}
 	}
 	return &alarm.AlarmSearchResp{List: AlarmList}, nil
+}
+
+// AlarmUpdate implements the AlarmImpl interface.
+func (s *AlarmImpl) AlarmUpdate(ctx context.Context, req *alarm.AlarmUpdateReq) (resp *alarm.AlarmUpdateResp, err error) {
+	var alarms database.Alarm
+	err = config.DB.Where("id = ?", req.Id).First(&alarms).Error
+	if err != nil {
+		return &alarm.AlarmUpdateResp{}, err
+	}
+	if alarms.Status == "Enable" {
+		err = config.DB.Model(&database.Alarm{}).Where("id = ?", req.Id).Update("status", "Disable").Error
+		if err != nil {
+			return &alarm.AlarmUpdateResp{}, err
+		}
+	} else {
+		err = config.DB.Model(&database.Alarm{}).Where("id = ?", req.Id).Update("status", "Enable").Error
+		if err != nil {
+			return &alarm.AlarmUpdateResp{}, err
+		}
+	}
+	return
 }

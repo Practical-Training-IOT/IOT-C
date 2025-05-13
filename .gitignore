@@ -4,3 +4,4 @@
 # Go dependencies
 /go.mod
 /go.sum
+*.log

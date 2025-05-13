@@ -9,4 +9,5 @@ func SetAlarmRouter(r *server.Hertz) {
 	r.GET("api/alarmList", handler.AlarmList)
 	r.GET("api/alarmDetail", handler.AlarmDetail)
 	r.GET("api/alarmSearch", handler.AlarmSearch)
+	r.GET("api/alarmUpdate", handler.AlarmUpdate)
 }

@@ -345,12 +345,62 @@ var fieldIDToName_AlarmSearchResp = map[int16]string{
 	1: "list",
 }
 
+type AlarmUpdateReq struct {
+	Id int64 `thrift:"id,1" frugal:"1,default,i64" json:"id"`
+}
+
+func NewAlarmUpdateReq() *AlarmUpdateReq {
+	return &AlarmUpdateReq{}
+}
+
+func (p *AlarmUpdateReq) InitDefault() {
+}
+
+func (p *AlarmUpdateReq) GetId() (v int64) {
+	return p.Id
+}
+func (p *AlarmUpdateReq) SetId(val int64) {
+	p.Id = val
+}
+
+func (p *AlarmUpdateReq) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("AlarmUpdateReq(%+v)", *p)
+}
+
+var fieldIDToName_AlarmUpdateReq = map[int16]string{
+	1: "id",
+}
+
+type AlarmUpdateResp struct {
+}
+
+func NewAlarmUpdateResp() *AlarmUpdateResp {
+	return &AlarmUpdateResp{}
+}
+
+func (p *AlarmUpdateResp) InitDefault() {
+}
+
+func (p *AlarmUpdateResp) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("AlarmUpdateResp(%+v)", *p)
+}
+
+var fieldIDToName_AlarmUpdateResp = map[int16]string{}
+
 type Alarm interface {
 	AlarmList(ctx context.Context, req *AlarmListReq) (r *AlarmListResp, err error)
 
 	AlarmDetail(ctx context.Context, req *AlarmDetailReq) (r *AlarmDetailResp, err error)
 
 	AlarmSearch(ctx context.Context, req *AlarmSearchReq) (r *AlarmSearchResp, err error)
+
+	AlarmUpdate(ctx context.Context, req *AlarmUpdateReq) (r *AlarmUpdateResp, err error)
 }
 
 type AlarmAlarmListArgs struct {
@@ -578,5 +628,81 @@ func (p *AlarmAlarmSearchResult) String() string {
 }
 
 var fieldIDToName_AlarmAlarmSearchResult = map[int16]string{
+	0: "success",
+}
+
+type AlarmAlarmUpdateArgs struct {
+	Req *AlarmUpdateReq `thrift:"req,1" frugal:"1,default,AlarmUpdateReq" json:"req"`
+}
+
+func NewAlarmAlarmUpdateArgs() *AlarmAlarmUpdateArgs {
+	return &AlarmAlarmUpdateArgs{}
+}
+
+func (p *AlarmAlarmUpdateArgs) InitDefault() {
+}
+
+var AlarmAlarmUpdateArgs_Req_DEFAULT *AlarmUpdateReq
+
+func (p *AlarmAlarmUpdateArgs) GetReq() (v *AlarmUpdateReq) {
+	if !p.IsSetReq() {
+		return AlarmAlarmUpdateArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+func (p *AlarmAlarmUpdateArgs) SetReq(val *AlarmUpdateReq) {
+	p.Req = val
+}
+
+func (p *AlarmAlarmUpdateArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+func (p *AlarmAlarmUpdateArgs) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("AlarmAlarmUpdateArgs(%+v)", *p)
+}
+
+var fieldIDToName_AlarmAlarmUpdateArgs = map[int16]string{
+	1: "req",
+}
+
+type AlarmAlarmUpdateResult struct {
+	Success *AlarmUpdateResp `thrift:"success,0,optional" frugal:"0,optional,AlarmUpdateResp" json:"success,omitempty"`
+}
+
+func NewAlarmAlarmUpdateResult() *AlarmAlarmUpdateResult {
+	return &AlarmAlarmUpdateResult{}
+}
+
+func (p *AlarmAlarmUpdateResult) InitDefault() {
+}
+
+var AlarmAlarmUpdateResult_Success_DEFAULT *AlarmUpdateResp
+
+func (p *AlarmAlarmUpdateResult) GetSuccess() (v *AlarmUpdateResp) {
+	if !p.IsSetSuccess() {
+		return AlarmAlarmUpdateResult_Success_DEFAULT
+	}
+	return p.Success
+}
+func (p *AlarmAlarmUpdateResult) SetSuccess(x interface{}) {
+	p.Success = x.(*AlarmUpdateResp)
+}
+
+func (p *AlarmAlarmUpdateResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
+func (p *AlarmAlarmUpdateResult) String() string {
+	if p == nil {
+		return "<nil>"
+	}
+	return fmt.Sprintf("AlarmAlarmUpdateResult(%+v)", *p)
+}
+
+var fieldIDToName_AlarmAlarmUpdateResult = map[int16]string{
 	0: "success",
 }

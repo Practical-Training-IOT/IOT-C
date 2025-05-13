@@ -14,6 +14,7 @@ type Client interface {
 	AlarmList(ctx context.Context, req *alarm.AlarmListReq, callOptions ...callopt.Option) (r *alarm.AlarmListResp, err error)
 	AlarmDetail(ctx context.Context, req *alarm.AlarmDetailReq, callOptions ...callopt.Option) (r *alarm.AlarmDetailResp, err error)
 	AlarmSearch(ctx context.Context, req *alarm.AlarmSearchReq, callOptions ...callopt.Option) (r *alarm.AlarmSearchResp, err error)
+	AlarmUpdate(ctx context.Context, req *alarm.AlarmUpdateReq, callOptions ...callopt.Option) (r *alarm.AlarmUpdateResp, err error)
 }
 
 // NewClient creates a client for the service defined in IDL.
@@ -58,4 +59,9 @@ func (p *kAlarmClient) AlarmDetail(ctx context.Context, req *alarm.AlarmDetailRe
 func (p *kAlarmClient) AlarmSearch(ctx context.Context, req *alarm.AlarmSearchReq, callOptions ...callopt.Option) (r *alarm.AlarmSearchResp, err error) {
 	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
 	return p.kClient.AlarmSearch(ctx, req)
+}
+
+func (p *kAlarmClient) AlarmUpdate(ctx context.Context, req *alarm.AlarmUpdateReq, callOptions ...callopt.Option) (r *alarm.AlarmUpdateResp, err error) {
+	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
+	return p.kClient.AlarmUpdate(ctx, req)
 }

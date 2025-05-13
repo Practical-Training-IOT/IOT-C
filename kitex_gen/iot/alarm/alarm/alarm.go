@@ -34,6 +34,13 @@ var serviceMethods = map[string]kitex.MethodInfo{
 		false,
 		kitex.WithStreamingMode(kitex.StreamingNone),
 	),
+	"AlarmUpdate": kitex.NewMethodInfo(
+		alarmUpdateHandler,
+		newAlarmAlarmUpdateArgs,
+		newAlarmAlarmUpdateResult,
+		false,
+		kitex.WithStreamingMode(kitex.StreamingNone),
+	),
 }
 
 var (
@@ -154,6 +161,24 @@ func newAlarmAlarmSearchResult() interface{} {
 	return alarm.NewAlarmAlarmSearchResult()
 }
 
+func alarmUpdateHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	realArg := arg.(*alarm.AlarmAlarmUpdateArgs)
+	realResult := result.(*alarm.AlarmAlarmUpdateResult)
+	success, err := handler.(alarm.Alarm).AlarmUpdate(ctx, realArg.Req)
+	if err != nil {
+		return err
+	}
+	realResult.Success = success
+	return nil
+}
+func newAlarmAlarmUpdateArgs() interface{} {
+	return alarm.NewAlarmAlarmUpdateArgs()
+}
+
+func newAlarmAlarmUpdateResult() interface{} {
+	return alarm.NewAlarmAlarmUpdateResult()
+}
+
 type kClient struct {
 	c client.Client
 }
@@ -189,6 +214,16 @@ func (p *kClient) AlarmSearch(ctx context.Context, req *alarm.AlarmSearchReq) (r
 	_args.Req = req
 	var _result alarm.AlarmAlarmSearchResult
 	if err = p.c.Call(ctx, "AlarmSearch", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) AlarmUpdate(ctx context.Context, req *alarm.AlarmUpdateReq) (r *alarm.AlarmUpdateResp, err error) {
+	var _args alarm.AlarmAlarmUpdateArgs
+	_args.Req = req
+	var _result alarm.AlarmAlarmUpdateResult
+	if err = p.c.Call(ctx, "AlarmUpdate", &_args, &_result); err != nil {
 		return
 	}
 	return _result.GetSuccess(), nil
