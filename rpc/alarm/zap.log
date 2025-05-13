@@ -4,6 +4,13 @@
 2025-05-09T21:57:50.463+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-09T22:00:52.313+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-10T08:03:25.592+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:00:34.201+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:37:14.735+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:39:15.931+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:40:53.091+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T10:06:42.233+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T16:52:02.738+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-13T15:07:34.988+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-11T19:18:36.064+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-11T22:20:53.575+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-12T08:11:59.055+0800	INFO	core/init.go:124	Successfully connected to database with GORM

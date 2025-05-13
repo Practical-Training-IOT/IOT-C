@@ -57,3 +57,17 @@ func AlarmSearch(ctx context.Context, c *app.RequestContext) {
 
 	c.JSON(200, list)
 }
+
+func AlarmUpdate(ctx context.Context, c *app.RequestContext) {
+	cli, err := alarm.NewClient("iot.alarm", client.WithHostPorts("0.0.0.0:50053"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	id, _ := strconv.Atoi(c.Query("id"))
+	req := alarms.AlarmUpdateReq{Id: int64(id)}
+	update, err := cli.AlarmUpdate(context.Background(), &req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	c.JSON(200, update)
+}

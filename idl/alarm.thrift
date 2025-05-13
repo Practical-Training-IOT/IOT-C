@@ -43,8 +43,17 @@ struct AlarmSearchResp{
     1: list<AlarmList> list;
 }
 
+struct AlarmUpdateReq{
+    1: i64 id
+}
+
+struct AlarmUpdateResp{
+
+}
+
 service alarm {
     AlarmListResp AlarmList(1: AlarmListReq req);
     AlarmDetailResp AlarmDetail(1: AlarmDetailReq req);
     AlarmSearchResp AlarmSearch(1: AlarmSearchReq req);
+    AlarmUpdateResp AlarmUpdate(1: AlarmUpdateReq req);
 }
