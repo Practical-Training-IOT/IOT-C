@@ -106,22 +106,18 @@ func GetUserInfo(ctx context.Context, c *app.RequestContext) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	get := c.Request.Header.Get("Authorization")
-	tokens := get[7:]
-	fmt.Println(tokens)
-	token, _ := pkg.GetToken(tokens)
-	if token == nil {
+	var id int
+	if userIDInterface, exists := c.Get("userID"); exists {
+		id = userIDInterface.(int)
+	} else {
 		responses := response.Response{
-			Code: 401,
-			Msg:  "登录失效",
+			Code: 400,
+			Msg:  "未找到用户信息，请重新登录",
 			Data: nil,
 		}
-		c.JSON(200, responses)
+		c.JSON(400, responses)
+		return
 	}
-	s := token["user"].(string)
-	fmt.Println(s)
-	fmt.Println(token)
-	id, _ := strconv.Atoi(s)
 	info, err := cli.UserInfo(ctx, &users.UserInfoReq{Id: int32(id)})
 	if err != nil {
 		responses := response.Response{
@@ -145,22 +141,18 @@ func UpdateUserInfo(ctx context.Context, c *app.RequestContext) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	get := c.Request.Header.Get("Authorization")
-	tokens := get[7:]
-	fmt.Println(tokens)
-	token, _ := pkg.GetToken(tokens)
-	if token == nil {
+	var id int
+	if userIDInterface, exists := c.Get("userID"); exists {
+		id = userIDInterface.(int)
+	} else {
 		responses := response.Response{
-			Code: 401,
-			Msg:  "登录失效",
+			Code: 400,
+			Msg:  "未找到用户信息，请重新登录",
 			Data: nil,
 		}
-		c.JSON(200, responses)
+		c.JSON(400, responses)
+		return
 	}
-	s := token["user"].(string)
-	fmt.Println(s)
-	fmt.Println(token)
-	id, _ := strconv.Atoi(s)
 	var userInfo request.UserInfoUpdate
 	c.BindJSON(&userInfo)
 	info, err := cli.UserInfoUpload(ctx, &users.UserInfoUploadReq{

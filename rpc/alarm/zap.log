@@ -6,3 +6,17 @@
 2025-05-10T08:03:25.592+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-11T19:18:36.064+0800	INFO	core/init.go:124	Successfully connected to database with GORM
 2025-05-11T22:20:53.575+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T08:11:59.055+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-13T08:07:24.592+0800	ERROR	core/init.go:108	failed to connect database: failed to connect to `user=root database=iot_platform_b`: 117.27.231.144:5432 (117.27.231.144): dial error: dial tcp 117.27.231.144:5432: connectex: A socket operation was attempted to an unreachable network.
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.PostGreSQLInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:108
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:26
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T08:21:16.117+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-13T14:44:22.162+0800	INFO	core/init.go:124	Successfully connected to database with GORM

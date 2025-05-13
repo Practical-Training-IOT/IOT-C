@@ -5,7 +5,7 @@ import "time"
 type UserC struct {
 	ID                uint64     `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
 	Username          string     `gorm:"column:username;size:50;unique;not null" json:"username"`
-	Password          string     `gorm:"column:password;size:255;not null" json:"password,omitempty"` // 注意：通常不应直接暴露密码字段
+	Password          string     `gorm:"column:password;size:255;not null" json:"password,omitempty"`
 	Email             string     `gorm:"column:email;size:100;unique;not null" json:"email"`
 	PhoneNumber       string     `gorm:"column:phone_number;size:15" json:"phone_number,omitempty"`
 	FirstName         string     `gorm:"column:first_name;size:50" json:"first_name,omitempty"`

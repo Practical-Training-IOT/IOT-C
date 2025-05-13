@@ -9,7 +9,7 @@ import (
 func SetUserRouter(r *server.Hertz) {
 	r.POST("api/register", handler.Register)
 	r.POST("api/login", handler.Login)
-	r.GET("api/user/getUserInfo", handler.GetUserInfo)
-	r.POST("api/user/uploadAvatar", pkg.UploadAvatarHandler)
-	r.POST("api/user/updateUserInfo", handler.UpdateUserInfo)
+	r.GET("api/user/getUserInfo", MyMiddleware(), handler.GetUserInfo)
+	r.POST("api/user/uploadAvatar", MyMiddleware(), pkg.UploadAvatarHandler)
+	r.POST("api/user/updateUserInfo", MyMiddleware(), handler.UpdateUserInfo)
 }

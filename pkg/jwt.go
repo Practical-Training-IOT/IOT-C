@@ -16,7 +16,7 @@ func TokenHandler(id string) (string, error) {
 	// 颁发一个有限期一小时的证书
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"user": id,
-		"exp":  time.Now().Add(time.Hour * time.Duration(1)).Unix(),
+		"exp":  time.Now().Add(time.Hour * time.Duration(10)).Unix(),
 		"iat":  time.Now().Unix(),
 	})
 	tokenString, err := token.SignedString([]byte(APP_KEY))

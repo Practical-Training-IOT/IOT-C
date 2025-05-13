@@ -1,0 +1,27 @@
+2025-05-12T09:14:58.527+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:18:41.513+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:19:08.163+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:20:24.708+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:20:48.127+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:21:04.651+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:21:29.012+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:23:06.229+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:24:15.442+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:25:07.791+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:26:40.466+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T09:38:51.376+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T17:48:21.010+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-12T17:51:55.385+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-13T08:07:23.481+0800	ERROR	core/init.go:108	failed to connect database: failed to connect to `user=root database=iot_platform_b`: 117.27.231.144:5432 (117.27.231.144): dial error: dial tcp 117.27.231.144:5432: connectex: A socket operation was attempted to an unreachable network.
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.PostGreSQLInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:108
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:26
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T08:21:31.595+0800	INFO	core/init.go:124	Successfully connected to database with GORM
+2025-05-13T14:44:22.236+0800	INFO	core/init.go:124	Successfully connected to database with GORM

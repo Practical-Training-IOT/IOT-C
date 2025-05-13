@@ -13,5 +13,7 @@ func customizedRegister(r *server.Hertz) {
 	r.GET("/ping", handler.Ping)
 	router.SetAlarmRouter(r)
 	router.SetUserRouter(r)
+	router.SetSceneRouter(r)
+	router.SetAIRouter(r)
 	// your code ...
 }

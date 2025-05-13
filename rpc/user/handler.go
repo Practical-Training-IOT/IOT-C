@@ -68,7 +68,7 @@ func (s *UserImpl) UserInfo(ctx context.Context, req *user.UserInfoReq) (resp *u
 	}
 	resp = &user.UserInfoRes{
 		Username:   users.Username,
-		Department: "暂无",
+		Department: users.Department,
 		Email:      email,
 		Phone:      phone,
 		Avatar:     users.ProfilePictureURL,

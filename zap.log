@@ -1,0 +1,66 @@
+2025-05-13T14:48:26.787+0800	ERROR	core/init.go:43	open ./config.yaml: The system cannot find the file specified.
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.ConfigInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:43
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:24
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T14:48:26.793+0800	ERROR	core/init.go:81	[client.SetServerConfig] configs[0] is invalid
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.NacosInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:81
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:25
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T14:48:26.795+0800	ERROR	core/init.go:108	failed to connect database: cannot parse `postgres://:xxxxx@:0/?sslmode=disable`: invalid port (outside range)
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.PostGreSQLInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:108
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:26
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T14:48:44.784+0800	ERROR	core/init.go:43	open ./config.yaml: The system cannot find the file specified.
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.ConfigInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:43
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:24
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T14:48:44.789+0800	ERROR	core/init.go:81	[client.SetServerConfig] configs[0] is invalid
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.NacosInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:81
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:25
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254
+2025-05-13T14:48:44.791+0800	ERROR	core/init.go:108	failed to connect database: cannot parse `postgres://:xxxxx@:0/?sslmode=disable`: invalid port (outside range)
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.PostGreSQLInit
+	D:/gowork/src/IOT-C/common/basic/core/init.go:108
+github.com/Practical-Training-IOT/IOT-C/common/basic/core.init.0
+	D:/gowork/src/IOT-C/common/basic/core/init.go:26
+runtime.doInit1
+	D:/go/src/runtime/proc.go:7350
+runtime.doInit
+	D:/go/src/runtime/proc.go:7317
+runtime.main
+	D:/go/src/runtime/proc.go:254

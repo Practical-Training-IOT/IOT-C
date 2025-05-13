@@ -1,0 +1,9 @@
+{
+    "PostgreSQL":{
+        "User": "root",
+        "Password": "x14735928711",
+        "Host": "117.27.231.144",
+        "Port": 5432,
+        "Datebase": "iot_platform_b"
+    }
+}
